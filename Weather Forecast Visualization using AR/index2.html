@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" contents="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Weather App - AR</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+
+    <style>
+        *{
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        box-sizing: border-box;
+    }
+    
+    body{
+        background: rgb(186, 221, 245);
+    }
+    
+    .card{
+        /* width: 90%;
+        max-width: 470px;
+        margin: 100px auto 0;
+         */
+        color: #ffff;
+        padding: 40px 35px;
+        text-align: center;
+        border-radius: 20px;
+        margin: 20px;
+        background: linear-gradient(135deg,#00feba,#5b548a);
+        /* height: 100vh; */
+        height: 100%;
+    }
+    
+    .search{
+          height: 100px;
+          width: 100%;
+          margin-top: 25px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+    }
+    .search input{
+        height: 100px;
+        width: 100%;
+        border: 0;
+        outline: 0;
+        background: #ebfffc;
+        color: #555;
+        padding: 10px 65px;
+        height: 125%;
+        border-radius: 60px;
+        flex: 1;
+        margin-right: 16px;
+        font-size: 40px;
+    }
+    .search button{
+        border: 0;
+        outline: 0;
+        background: #ebfffc;
+        border-radius: 60%;
+        width: 125px;
+        height: 125%;
+        cursor: pointer;
+    }
+    .search button img{
+        width: 40px
+    }
+
+
+    .weather-icon{
+        /* border: solid red 2px; */
+        width: 50%;
+        margin-top: 10%;
+    }
+    .weather h1{
+        /* border: solid red 2px; */
+        margin-top: -10px;
+        font-size: 88px;
+        font-weight: 500;
+    }
+    .weather h2{
+        /* border: red solid 2px; */
+        font-size: 65px;
+        font-weight: 400;
+        margin-top: -10px;
+    }
+    .details{
+        /* border: red solid 2px; */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 50px;
+        margin-top: 125px;
+    
+    }
+    
+    .col1{
+        /* display: inline-block; */
+        /* border: solid green 2px; */
+        font-size: 34px;
+        display: flex;
+        align-items: center;
+        /* text-align: left; */
+    }
+    .col2{
+        /* display: inline-block; */
+        /* border: solid green 4px; */
+        font-size: 34px;
+        display: flex;
+        align-items: center;
+        padding: 34px;
+        /* text-align: left; */
+    }
+
+    .col1 img{
+        /* border: solid green 2px; */
+        height: 125px;
+        width: 125px;
+        margin-right: 15px;
+    }
+    .col2 img
+    {
+        /* border: solid green 2px; */
+        height: 125px;
+        width: 125px;
+    }
+    
+    .humidity{
+        /* border: solid green 2px; */
+        font-size: 74px;
+        /* margin-top: -6px; */
+        margin: 10px;
+    }
+    .wind{
+        /* border: solid green 2px; */
+        font-size: 74px;
+        /* margin-top: -6px; */
+        margin: 10px;
+    }
+    
+    .weather{
+        display: none;
+    }
+    
+    .error{
+        text-align: left;
+        margin-left: 10px;
+        font-size: 14px;
+        margin-top: 10px;
+        display: none;
+    }
+
+    .outermodl{
+        margin-top: 100px;
+        align-items: center;
+        /* border: solid red 2px; */
+        display: flex;
+        justify-content: center;
+    }
+    .modl model-viewer{
+        height: 270px;
+        width: 350px;
+        /* border: solid red 2px; */
+    }
+    model-viewer > #model {
+        transform: scaleX(-1);
+    }
+    
+    </style>
+    
+
+</head>
+
+<body>
+    <div class="card">
+        <div class="search">
+            <input type="text" placeholder="enter city name" spellcheck="false">
+            <button><img src="images/search.png"></button>
+        </div>
+        <div class="error">
+            <p>Invalid city name</p>
+        </div>
+
+        <div class="weather">
+            <img src="images/rain.png" class="weather-icon">
+            <h1 class="temp">22*C</h1>
+            <h2 class="city">New York</h2>
+            <div class="details">
+                <div class="col1">
+                    <img src="images/humidity.png">
+                    <div>
+                        <p class="humidity">50%</p>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="col2">
+                    <img src="images/wind.png">
+                    <div>
+                        <p class="wind">15 kn/h</p>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            
+            <div class="outermodl">
+                <div class="modl" style="padding-left: 50px; margin-top: 20px;">
+                    
+                    
+                    <model-viewer 
+                        src=""
+                        ios-src="https://cdn.glitch.com/36cb8393-65c6-408d-a538-055ada20431b/Astronaut.usdz?v=1569545377878"
+                        alt="A 3D model of an astronaut"
+                        shadow-intensity="1"
+                        camera-controls
+                        auto-rotate ar>
+                        <div slot="hotspot-1">
+                            <div class="lbl" style="font-size: 35px; position: absolute; bottom: 134px; left: 20%;">Model Label</div>
+                        </div>
+                    </model-viewer>
+                
+                
+                </div>
+            </div>
+            <br>
+            <h2>View in your Space</h2>
+        </div>
+    </div>
+
+
+    <script type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+  </script>
+    <script>
+        const apiKey="44cb7bd3b32fe9cbd33059d13203f635";
+        const apiUrl="https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+        const chairModel="https://cdn.glitch.global/30ecf31c-8368-4d9d-a992-4edc2e215e8a/chair.glb?v=1682149012569";
+        const astronautModel="https://cdn.glitch.com/36cb8393-65c6-408d-a538-055ada20431b%2FAstronaut.glb?v=1542147958948";
+
+        const rainyModel="https://cdn.glitch.global/30ecf31c-8368-4d9d-a992-4edc2e215e8a/rainy_earth.glb?v=1682239047728";
+        const clearModel="https://cdn.glitch.global/30ecf31c-8368-4d9d-a992-4edc2e215e8a/clear_earth.glb?v=1682242848865";
+        const cloudModel="https://cdn.glitch.global/30ecf31c-8368-4d9d-a992-4edc2e215e8a/cloud_earth.glb?v=1682242909459";
+        const snowModel="https://cdn.glitch.global/30ecf31c-8368-4d9d-a992-4edc2e215e8a/snow_earth.glb?v=1682242989278";
+        const mistModel="https://cdn.glitch.global/30ecf31c-8368-4d9d-a992-4edc2e215e8a/mist_earth.glb?v=1682243078214";
+    
+
+        const searchBox = document.querySelector(".search input");
+        const searchBtn = document.querySelector(".search button");
+        const weatherIcon = document.querySelector(".weather-icon");
+        const modelViewer = document.querySelector('model-viewer');
+
+         async function checkWeather(city){
+            const response=await fetch(apiUrl + city + `&appid=${apiKey}`);
+            // modelViewer.setAttribute('src', rainyModel);
+            if(response.status==404){
+                document.querySelector(".error").style.display="block";
+                document.querySelector(".weather").style.display="none";
+            }
+            else{
+                var data=await response.json();
+                console.log(data);
+
+                document.querySelector(".city").innerHTML=data.name;
+                document.querySelector(".temp").innerHTML=Math.round(data.main.temp) + "° C";
+                document.querySelector(".wind").innerHTML=data.wind.speed + " km/h";
+                document.querySelector(".humidity").innerHTML=data.main.humidity + "%";
+                document.querySelector(".lbl").innerHTML=data.name+" "+Math.round(data.main.temp) + "°C";
+
+                if(data.weather[0].main=="Clouds"){
+                    weatherIcon.src="images/clouds.png";
+                    modelViewer.setAttribute('src', cloudModel);
+                }
+                else if(data.weather[0].main=="Clear"){
+                    weatherIcon.src="images/clear.png";
+                    modelViewer.setAttribute('src', clearModel);
+                }
+                else if(data.weather[0].main=="Rain"){
+                    weatherIcon.src="images/rain.png";
+                    modelViewer.setAttribute('src', rainyModel);
+                }
+                else if(data.weather[0].main=="Drizzle"){
+                    weatherIcon.src="images/drizzle.png";
+                    modelViewer.setAttribute('src', rainyModel);
+                }
+                else if(data.weather[0].main=="Mist"){
+                    weatherIcon.src="images/mist.png";
+                    modelViewer.setAttribute('src', mistModel);
+                }
+                document.querySelector(".weather").style.display="block";
+                document.querySelector(".error").style.display="none";
+                }
+         }
+
+         searchBtn.addEventListener("click", ()=>{
+            checkWeather(searchBox.value);
+         })
+        
+    </script>
+    
+</body>
+</html>
